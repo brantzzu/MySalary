@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
-import {Storage} from '@ionic/storage';
+import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
-import {FormBuilder} from '@angular/forms';
-import {NavParams, ViewController} from 'ionic-angular';
-import {NativeService} from '../../../providers/NativeService';
-import {UserInfo} from "../../../model/UserInfo";
-import {Validators} from "../../../providers/Validators";
+import { FormBuilder } from '@angular/forms';
+import { NavParams, ViewController } from 'ionic-angular';
+import { NativeService } from '../../../providers/NativeService';
+import { UserInfo } from "../../../model/UserInfo";
+import { Validators } from "../../../providers/Validators";
 
 @Component({
   selector: 'page-mine-edit-modal',
@@ -25,24 +25,18 @@ export class MineEditModalPage {
       'errorMsg': '',
       'required': '手机号码为必填项',
       'phone': '请输入正确的手机号码'
-    },
-    'email': {
-      'errorMsg': '',
-      'required': '电子邮箱为必填项',
-      'email': '请输入正确的邮箱地址'
     }
   };
 
   constructor(private params: NavParams,
-              private viewCtrl: ViewController,
-              private storage: Storage,
-              private formBuilder: FormBuilder,
-              private nativeService: NativeService) {
+    private viewCtrl: ViewController,
+    private storage: Storage,
+    private formBuilder: FormBuilder,
+    private nativeService: NativeService) {
     this.userInfo = params.get('userInfo');
     this.userForm = this.formBuilder.group({
       name: [this.userInfo.name, [Validators.required, Validators.minLength(2), Validators.chinese]],
-      phone: [this.userInfo.phone, [Validators.required, Validators.phone]],
-      email: [this.userInfo.email, [Validators.required, Validators.email]]
+      phone: [this.userInfo.phone, [Validators.required, Validators.phone]]
     });
     this.userForm.valueChanges
       .subscribe(data => {

@@ -4,7 +4,6 @@ import { Storage } from '@ionic/storage';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Observable } from "rxjs";
 import { LoginService } from './LoginService';
-
 import { FindPasswordPage } from './find-password/find-password';
 import { RegisterPage } from './register/register';
 import { UserInfo, LoginInfo } from "../../model/UserInfo";
@@ -32,7 +31,8 @@ export class LoginPage {
     private nativeService: NativeService,
     private loginService: LoginService) {
     this.loginForm = this.formBuilder.group({
-      phone: ['', [Validators.required, Validators.pattern('1[0-9]{10}')]],// 第一个参数是默认值
+      //phone: ['', [Validators.required, Validators.pattern('1[0-9]{10}')]],// 第一个参数是默认值
+      account: ['', [Validators.required, Validators.pattern('[0-9]+')]],
       password: ['', [Validators.required]]
     });
   }
@@ -41,10 +41,13 @@ export class LoginPage {
     this.storage.get('LoginInfo').then((loginInfo: LoginInfo) => {
       this.userInfo = loginInfo && loginInfo.user ? loginInfo.user : null;
     });
+    this.canLeave = false;
   }
 
   ionViewCanLeave(): boolean {
     let bool = !!this.userInfo;
+    console.log("this.isableToLeave");
+    console.log(this.canLeave);
     if (this.canLeave || bool) {
       return true;
     } else {
@@ -82,11 +85,13 @@ export class LoginPage {
             access_token: this.userInfo.token,
             user: {
               id: loginUser.id,
-              username: loginUser.username,
-              email: loginUser.email,
+              account: loginUser.account,
+              name: loginUser.name,
               phone: loginUser.phone,
+              post: loginUser.post,
               avatarId: '',
-              description: ''
+              description: '',
+              employeeCode: loginUser.employeeCode
             }
 
           };
@@ -104,17 +109,19 @@ export class LoginPage {
 
 
   toRegister() {
+    console.log("toRegister:");
+    console.log(this.canLeave);
     this.canLeave = true;
     let modal = this.modalCtrl.create(RegisterPage);
     modal.present();
-    this.canLeave = false;
+
   }
 
   findPassword() {
     this.canLeave = true;
     let modal = this.modalCtrl.create(FindPasswordPage);
     modal.present();
-    this.canLeave = false
+
   }
 
 }

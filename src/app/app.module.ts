@@ -8,6 +8,7 @@ import { LoginModule } from '../pages/login/login.module';
 import { HomeModule } from '../pages/home/home.module';
 import { MineModule } from '../pages/mine/mine.module';
 import { SalaryModule } from '../pages/salary/salary.module';
+import { SalaryHistoryModule } from '../pages/salary-history/salary-history.module';
 import { PerformanceModule } from '../pages/performance/performance.module';
 import { AttendanceModule } from '../pages/attendance/attendance.module';
 import { ContractModule } from '../pages/contract/contract.module';
@@ -62,6 +63,7 @@ class FunDebugErrorHandler implements ErrorHandler {
     LoginModule,
     HomeModule,
     SalaryModule,
+    SalaryHistoryModule,
     MineModule,
     PerformanceModule,
     AttendanceModule,

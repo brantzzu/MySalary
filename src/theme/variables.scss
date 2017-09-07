@@ -45,6 +45,34 @@ $colors: (
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
+$toolbar-background:                    color($colors, primary);
+$tabs-ios-background:                   #f8f8f8;
+$tabs-md-background:                    #f8f8f8;
+$searchbar-ios-input-height:            33px;
+$searchbar-ios-background-color:        color($colors, primary);
+
+$hairlines-width:                       1px;
+$list-border-color:                     #e0dfe4;
+
+@import "ionic.theme.default";
+
+// start 自定义全局css,具体使用例子,请全局搜索class名
+.validation-failed{
+  float: right;
+  padding-right: 10px;
+  color: #ff0000;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.clear-fix:before,
+.clear-fix:after {
+  display: table;
+  content: " ";
+}
+.clear-fix:after{
+  clear: both;
+}
 
 
 

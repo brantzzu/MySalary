@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      考勤扣减详情
+    </ion-title>
+    <ion-buttons>
+      <button ion-button (click)="dismiss()">关闭</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="noPerformanceDeduction;else PerformanceDeductionTemplate">
+    <h3> 暂无考勤扣减信息</h3>
+  </div>
+  <ng-template #PerformanceDeductionTemplate>
+    <ion-item *ngFor="let item of performanceDeductionDetail">
+
+      <div class="row">
+        <div class="col">月份：{{item.salaryYear}} —{{item.salaryMonth}}</div>
+      </div>
+      <div class="row">
+        <div class="col">考勤天数：{{item.attendanceDays}}</div>
+      </div>
+      <div class="row">
+        <div class="col">事病假天数：{{item.sickLeaveDays}}</div>
+      </div>
+      <div class="row">
+        <div class="col">扣事病假工资：{{item.deductionSalary}}</div>
+      </div>
+      <div class="row">
+        <div class="col">扣迟到/早退/旷工：{{item.deductionSalary}}</div>
+      </div>
+      <div class="row">
+        <div class="col">加班天数：{{item.overtimeDays}}</div>
+      </div>
+    </ion-item>
+
+  </ng-template>
+
+
+</ion-content>

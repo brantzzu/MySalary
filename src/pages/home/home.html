@@ -5,10 +5,13 @@
 </ion-header>
 
 <ion-content padding>
+  <div id="logo">
+    <img src="assets/img/woaiwojia.png" alt="logo" class="logo-img">
+  </div>
   <div id="functionPanel" class="classification">
     <div class="cbox">
       <div class="icon">
-        <img src="./assets/img/salary.png" />
+        <img src="./assets/img/salary.png" (click)="goToSalary()" />
       </div>
       <p>工资信息</p>
     </div>

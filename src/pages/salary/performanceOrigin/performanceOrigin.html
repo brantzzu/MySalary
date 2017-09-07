@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      业绩来源
+    </ion-title>
+    <ion-buttons>
+      <button ion-button (click)="dismiss()">关闭</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="noPerformanceOrigin;else PerformanceOriginTemplate">
+    <h3> 暂无业绩来源信息</h3>
+  </div>
+  <ng-template #PerformanceOriginTemplate>
+    <div class="row">
+      <div class="col">月份：{{salaryYear}} —{{salaryMonth}}</div>
+    </div>
+    <hr>
+    <ion-grid text-center>
+      <ion-row>
+        <ion-col width-25>日期</ion-col>
+        <ion-col width-25>合同编号</ion-col>
+        <ion-col width-25>业绩金额</ion-col>
+        <ion-col width-25>业绩类型</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of performanceOrigin">
+        <ion-col width-25>{{item.performanceDate | date:'yyyy-MM-dd'}}</ion-col>
+        <ion-col width-25>{{item.contractCode}}</ion-col>
+        <ion-col width-25>{{item.performanceAmount}}</ion-col>
+        <ion-col width-25>{{item.performanceType}}</ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ng-template>
+
+
+</ion-content>

@@ -8,7 +8,7 @@ export const IMAGE_SIZE = 1024;//默认分页大小
 export const QUALITY_SIZE = 94;//图像质量，范围为0 - 100
 export const ENABLE_FUNDEBUG = false;
 export const IS_DEBUG = true;//是否开发(调试)模式
-export const FUNDEBUG_API_KEY = '3701a358f79b7daa39592255bde6c3c8772efad642883e42dbb65f3f8ffbae11';//去https://fundebug.com/申请key
+export const FUNDEBUG_API_KEY = 'ee0dac93198f558a48685dc78589eb14043e4c3a86a56f68dc4e750d4b5a5278';//去https://fundebug.com/申请key
 
 
 

@@ -30,8 +30,8 @@ export class TabsPage {
   ionViewWillEnter() {
     this.events.subscribe('user:login', (loginInfo: LoginInfo) => {
       let userInfo = loginInfo.user;
-      this.globalData.userId = userInfo.id;
-      this.globalData.username = userInfo.username;
+      this.globalData.userId = userInfo.employeeCode;
+      this.globalData.username = userInfo.name;
       this.globalData.token = loginInfo.access_token;
       this.helper.loadAvatarPath(userInfo.avatarId).subscribe(avatarPath => {
         userInfo.avatarPath = avatarPath;

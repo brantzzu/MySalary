@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>工资查询</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>开始月份</ion-label>
+    <ion-datetime displayFormat="YYYY-MM" [(ngModel)]="startDate" id="startMonth">开始年月:</ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>结束月份</ion-label>
+    <ion-datetime displayFormat="YYYY-MM" [(ngModel)]="endDate" id="startMonth">开始年月:</ion-datetime>
+  </ion-item>
+  <button ion-button full (click)="search()">查询</button>
+
+  <!-- <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>年月</th>
+        <th>算薪职位</th>
+        <th>税后工资</th>
+        <th>实发工资</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of salaryInfo; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+        <td>{{i+1}}</td>
+        <td>{{item.salaryYear}} -{{item.salarymonth}}</td>
+        <td>暂无</td>
+        <td>{{item.afterTaxSalary}}</td>
+        <td>{{item.realSalary}}</td>
+      </tr>
+    </tbody>
+  </table> -->
+  <div *ngIf="noSalaryInfo;else SalaryInfoTemplate">
+    <h3> 暂无工资发放信息</h3>
+  </div>
+  <ng-template #SalaryInfoTemplate>
+    <ion-grid text-center>
+      <ion-row>
+        <ion-col width-10>序号</ion-col>
+        <ion-col width-15>年月</ion-col>
+        <ion-col width-25>算薪职位</ion-col>
+        <ion-col width-25>税后工资</ion-col>
+        <ion-col width-25>实发工资</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of salaryInfo; let i = index">
+        <ion-col width-10>{{i+1}}</ion-col>
+        <ion-col width-15>{{item.salaryYear}} —{{item.salaryMonth}}</ion-col>
+        <ion-col width-25>{{item.post.postName}}</ion-col>
+        <ion-col width-25>{{item.afterTaxSalary}}</ion-col>
+        <ion-col width-25>{{item.realSalary}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-template>
+
+</ion-content>

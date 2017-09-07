@@ -1,34 +1,77 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>我爱我家</ion-title>
+    <ion-title>我的工资</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <div id="functionPanel" class="classification">
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/salary.png" />
-      </div>
-      <p>工资信息</p>
-    </div>
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/statistics.png" />
-      </div>
-      <p>绩效信息</p>
-    </div>
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/list.png" />
-      </div>
-      <p>考勤信息</p>
-    </div>
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/contract.png" />
-      </div>
-      <p>合同信息</p>
-    </div>
+<ion-content>
+  <div *ngIf="noSalaryInfo;else SalaryInfoTemplate">
+    <h3> 暂无工资发放信息</h3>
   </div>
+  <ng-template #SalaryInfoTemplate>
+    <ion-item *ngFor="let item of salaryInfo">
+      <div class="row">
+        <div class="col">姓名：{{userInfo?.name}}</div>
+      </div>
+      <div class="row">
+        <div class="col">当前月份：{{item.salaryYear}} —{{item.salaryMonth}}</div>
+        <div class="col"><button ion-button round (click)="gotoSalaryHistory()">查看往月</button></div>
+      </div>
+      <div class="row">
+        <div class="col">算薪职位：{{item.post.postName}}</div>
+      </div>
+      <div class="row">
+        <div class="col">应发金额：{{item.afterTaxSalary}}</div>
+      </div>
+      <div class="row">
+        <div class="col">实发金额：{{item.realSalary}}</div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">基本工资：{{item.basicSalary}}</div>
+      </div>
+      <div class="row">
+        <div class="col">岗位津贴：{{item.postAllowance}}</div>
+      </div>
+      <div class="row">
+        <div class="col">考勤扣减：{{item.attendanceDeduction}}</div>
+        <div class="col"><button ion-button round outline (click)="performanceDeductionDetail()">查看详细</button></div>
+      </div>
+      <div class="row">
+        <div class="col">加班费：{{item.overTimeFee}}</div>
+      </div>
+      <div class="row">
+        <div class="col">业绩金额：{{item.currentMonthPerformance}}</div>
+        <div class="col"><button ion-button round outline (click)="performanceOrigin()">查看来源</button></div>
+      </div>
+      <div class="row">
+        <div class="col">业绩提成：{{item.commissionAmount}}</div>
+      </div>
+      <div class="row">
+        <div class="col">未回扣减：{{item.weihuiDeduction}}</div>
+      </div>
+      <div class="row">
+        <div class="col">提点津贴：{{item.commissionAllowance}}</div>
+      </div>
+      <div class="row">
+        <div class="col">其他发放：{{item.otherAllowence}}</div>
+        <div class="col"><button ion-button round outline>查看详细</button></div>
+      </div>
+      <div class="row">
+        <div class="col"> 其他扣减：{{item.otherDeduction}}</div>
+        <div class="col"><button ion-button round outline>查看详细</button></div>
+      </div>
+      <div class="row">
+        <div class="col">社保扣减：{{item.socialSecurityDeduction}}</div>
+      </div>
+      <div class="row">
+        <div class="col">个税扣减：{{item.taxDeduction}}</div>
+      </div>
+    </ion-item>
+    <div padding-vertical>
+      <canvas #chartPie height="200"></canvas>
+    </div>
+  </ng-template>
+
+
 </ion-content>

@@ -1,14 +1,16 @@
 export interface UserInfo {
   id: string;
-  username: string;
   name: string;
-  email: string;
+  account: String;
+  employeeCode: string;
   phone: string;
   avatarId: string;
   avatarPath: string;
   description: string;
   token: string;
   password: string;
+  erpCode: string;
+  post: any;
 }
 export interface LoginInfo {
   access_token: string;
