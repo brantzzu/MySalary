@@ -6,12 +6,13 @@
 
 <ion-content padding>
   <ion-textarea style="overflow-y:hidden; height:50px;" onpropertychange="this.style.height=this.scrollHeight + 'px'" oninput="this.style.height=this.scrollHeight + 'px'"
-    [(ngModel)]="description" placeholder="请填写问题描述">
+    [(ngModel)]="phoneNumber" placeholder="手机号">
+  </ion-textarea>
+  <hr>
+  <ion-textarea style="overflow-y:hidden; height:50px;" onpropertychange="this.style.height=this.scrollHeight + 'px'" oninput="this.style.height=this.scrollHeight + 'px'"
+    [(ngModel)]="feedbackContent" placeholder="反馈内容">
   </ion-textarea>
   <div>
-    <page-select-picture [(fileObjList)]="fileObjList"></page-select-picture>
-  </div>
-  <div>
-    <button ion-button type="submit" block (click)="save()">保存</button>
+    <button ion-button block (click)="send()">发送</button>
   </div>
 </ion-content>

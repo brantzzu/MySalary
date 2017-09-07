@@ -23,6 +23,13 @@
       咨询电话
     </ion-item>
   </ion-list>
+  <ion-list>
+    <ion-item (click)="feedback()">
+      <ion-icon name="send" item-left color="secondary"></ion-icon>
+      问题反馈
+      <ion-icon name='ios-arrow-forward' item-right></ion-icon>
+    </ion-item>
+  </ion-list>
 
   <ion-list>
     <ion-item (click)="exitSoftware()" hideWhen="ios">

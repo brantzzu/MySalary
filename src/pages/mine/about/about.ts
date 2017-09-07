@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {NativeService} from "../../../providers/NativeService";
-import {UpdateLogPage} from "../update-log/update-log";
-import {FeedBackPage} from "../feed-back/feed-back";
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { NativeService } from "../../../providers/NativeService";
+import { UpdateLogPage } from "../update-log/update-log";
+import { FeedBackPage } from "../feed-back/feed-back";
 
 @Component({
   selector: 'page-about',
@@ -12,7 +12,7 @@ export class AboutPage {
   versionNo: string = '0.0.1';
 
   constructor(private navCtrl: NavController,
-              private nativeService: NativeService) {
+    private nativeService: NativeService) {
     if (this.nativeService.isMobile()) {
       this.nativeService.getVersionNumber().subscribe(value => {
         this.versionNo = value;
@@ -32,9 +32,9 @@ export class AboutPage {
     this.nativeService.showToast('正在完善...');
   }
 
-  feedBack() {
-    this.navCtrl.push(FeedBackPage);
-  }
+  // feedBack() {
+  //   this.navCtrl.push(FeedBackPage);
+  // }
 
 }
 

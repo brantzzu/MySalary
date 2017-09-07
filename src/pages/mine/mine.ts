@@ -12,6 +12,8 @@ import { DEFAULT_AVATAR } from "../../providers/Constants";
 import { SettingPage } from "./setting/setting";
 import { ChangePasswordPage } from "./change-password/change-password";
 
+import { FeedBackPage } from "./feed-back/feed-back";
+
 @Component({
   selector: 'page-mine',
   templateUrl: 'mine.html'
@@ -20,13 +22,16 @@ export class MinePage {
   userInfo: UserInfo;
   avatarPath: String = DEFAULT_AVATAR;
 
+
   constructor(private navCtrl: NavController,
     private platform: Platform,
     private storage: Storage,
     private helper: Helper,
     private modalCtrl: ModalController,
     private CallNumber: CallNumber,
+    //private sms: SMS,
     private alertCtrl: AlertController) {
+
 
   }
 
@@ -135,6 +140,10 @@ export class MinePage {
     this.CallNumber.callNumber(number, true)
       .then(() => console.log('Launched dialer!'))
       .catch(() => console.log('Error launching dialer'));
+  }
+  feedback() {
+    //this.sms.send(this.phoneNumber, this.feedbackContent);
+    this.navCtrl.push(FeedBackPage);
   }
 
 }

@@ -24,6 +24,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { Network } from '@ionic-native/network';
 import { AppMinimize } from '@ionic-native/app-minimize';
 import { CallNumber } from '@ionic-native/call-number';
+import { SMS } from '@ionic-native/sms';
 import { NativeService } from "../providers/NativeService";
 import { HttpService } from "../providers/HttpService";
 import { FileService } from "../providers/FileService";
@@ -35,13 +36,14 @@ import { ENABLE_FUNDEBUG, IS_DEBUG, FUNDEBUG_API_KEY } from "../providers/Consta
 import { Logger } from "../providers/Logger";
 import { ModalFromRightEnter, ModalFromRightLeave, ModalScaleEnter, ModalScaleLeave } from "./modal-transitions";
 
-declare var require: any;
-let fundebug: any = require("fundebug-javascript");//先安装依赖:cnpm i fundebug-javascript --save
+//declare var require: any;
+//let fundebug: any = require("fundebug-javascript");//先安装依赖:cnpm i fundebug-javascript --save
+import * as fundebug from 'fundebug-javascript';
 fundebug.apikey = FUNDEBUG_API_KEY;
 fundebug.releasestage = IS_DEBUG ? 'development' : 'production';//应用开发阶段，development:开发;production:生产
 fundebug.silent = !ENABLE_FUNDEBUG;//如果暂时不需要使用Fundebug，将silent属性设为true
 
-class FunDebugErrorHandler implements ErrorHandler {
+export class FunDebugErrorHandler implements ErrorHandler {
   handleError(err: any): void {
     fundebug.notifyError(err);
     console.error(err);
@@ -83,6 +85,7 @@ class FunDebugErrorHandler implements ErrorHandler {
     Network,
     AppMinimize,
     CallNumber,
+    SMS,
     { provide: ErrorHandler, useClass: FunDebugErrorHandler },
     NativeService,
     HttpService,

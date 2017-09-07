@@ -6,8 +6,8 @@ export const DEFAULT_AVATAR = './assets/img/avatar.png';//用户默认头像
 export const PAGE_SIZE = 5;//默认分页大小
 export const IMAGE_SIZE = 1024;//默认分页大小
 export const QUALITY_SIZE = 94;//图像质量，范围为0 - 100
-export const ENABLE_FUNDEBUG = false;
-export const IS_DEBUG = true;//是否开发(调试)模式
+export const ENABLE_FUNDEBUG = true;
+export const IS_DEBUG = false;//是否开发(调试)模式
 export const FUNDEBUG_API_KEY = 'ee0dac93198f558a48685dc78589eb14043e4c3a86a56f68dc4e750d4b5a5278';//去https://fundebug.com/申请key
 
 
