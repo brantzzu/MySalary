@@ -30,13 +30,14 @@ export class FeedBackPage {
     let options = {
       replaceLineBreaks: false,
       android: {
-        //intent: 'INTENT'
-        intent: ''
+        intent: 'INTENT'
+        //intent: ''
       }
     }
     this.sms.send(this.phoneNumber, this.feedbackContent, options).then(success => {
-      this.nativeService.showToast("发送成功");
-      this.navCtrl.pop();
+      //this.nativeService.showToast("发送成功");
+      console.log("短信发送成");
+      //this.navCtrl.pop();
     }, error => {
       this.nativeService.showToast("发送失败");
     });
