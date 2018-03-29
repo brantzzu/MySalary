@@ -17,10 +17,10 @@ import { LoginInfo } from "../../model/UserInfo";
 export class TabsPage {
   @ViewChild('mainTabs') tabs: Tabs;
   homeRoot: any = HomePage;
-  salaryRoot: any = SalaryPage;
-  performanceRoot: any = PerformancePage;
-  attendanceRoot: any = AttendancePage;
-  contractRoot: any = ContractPage;
+  //salaryRoot: any = SalaryPage;
+  salaryPageRoot: any = SalaryPage;
+  //attendanceRoot: any = AttendancePage;
+  //contractRoot: any = ContractPage;
   mineRoot: any = MinePage;
 
   constructor(public events: Events, private globalData: GlobalData, private storage: Storage, private helper: Helper) {
@@ -30,8 +30,7 @@ export class TabsPage {
   ionViewWillEnter() {
     this.events.subscribe('user:login', (loginInfo: LoginInfo) => {
       let userInfo = loginInfo.user;
-      this.globalData.userId = userInfo.employeeCode;
-      this.globalData.username = userInfo.name;
+      this.globalData.username = userInfo.userName;
       this.globalData.token = loginInfo.access_token;
       this.helper.loadAvatarPath(userInfo.avatarId).subscribe(avatarPath => {
         userInfo.avatarPath = avatarPath;

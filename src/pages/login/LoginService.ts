@@ -17,10 +17,10 @@ export class LoginService {
 
   login(user): Observable<(UserInfo)> {
     let param = {
-      'account': user.account,
+      'phone': user.phone,
       'password': user.password
     };
-    return this.httpService.post('http://quants.sufe.edu.cn/loveFamilyAuthenticate', param).map((res: Response) => res.json());
+    return this.httpService.post('http://quants.sufe.edu.cn/loginAuthenticate', param).map((res: Response) => res.json());
 
   }
 }

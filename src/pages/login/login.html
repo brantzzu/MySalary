@@ -11,11 +11,11 @@
   <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
     <ion-list>
       <ion-item>
-        <ion-label color="primary">帐号</ion-label>
-        <ion-input type="text" formControlName="account" clearInput></ion-input>
+        <ion-label color="primary">手机号</ion-label>
+        <ion-input type="text" formControlName="phone" clearInput></ion-input>
       </ion-item>
-      <div *ngIf="!loginForm.controls.account.valid && loginForm.controls.account.touched" class="validation-failed">
-        请输入正确帐号</div>
+      <div *ngIf="!loginForm.controls.phone.valid && loginForm.controls.phone.touched" class="validation-failed">
+        请输入正确手机号</div>
 
       <ion-item>
         <ion-label color="primary">密　码</ion-label>

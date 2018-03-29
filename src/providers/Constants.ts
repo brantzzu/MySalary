@@ -1,5 +1,6 @@
 export const FILE_SERVE_URL = 'http://localhost:3333/';
 export const APP_SERVE_URL = 'http://localhost:8100';
+//export const APP_SERVE_URL = "http://quants.sufe.edu.cn"
 //export const MARKER_URL = 'http://quants.sufe.edu.cn/parkingLot';
 //export const MARKER_URL = '/assets/data/parkingLot.json';
 export const DEFAULT_AVATAR = './assets/img/avatar.png';//用户默认头像

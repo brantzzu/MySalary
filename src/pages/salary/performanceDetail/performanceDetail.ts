@@ -32,7 +32,7 @@ export class PerformanceDetailPage {
   };
   ionViewWillEnter() {
     let param = {
-      'employeeCode': this.userInfo.employeeCode,
+      'phone': this.userInfo.phone,
       'salaryYear': this.salaryYear,
       'salaryMonth': this.salaryMonth
     };

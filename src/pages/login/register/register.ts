@@ -20,9 +20,7 @@ export class RegisterPage {
     private nativeService: NativeService,
     private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
-      name: [, [Validators.required, Validators.pattern('[(\u4e00-\u9fa5)0-9a-zA-Z\_\s@]+')]],
-      employeeCode: [, [Validators.required, Validators.pattern('[0-9]+')]],
-      account: [, [Validators.required, Validators.pattern('[0-9]+')]],
+      userName: [, [Validators.required, Validators.pattern('[(\u4e00-\u9fa5)0-9a-zA-Z\_\s@]+')]],
       verificationCode: [, [Validators.required, Validators.minLength(4), Validators.pattern('1[0-9]{3}')]],
       phone: [, [Validators.required, Validators.pattern('1[0-9]{10}')]],
       password: [, [Validators.required]]
@@ -35,13 +33,11 @@ export class RegisterPage {
     // console.log(this.registerForm.value.password);
     let param = {
       'phone': this.registerForm.value.phone,
-      'name': this.registerForm.value.name,
-      'account': this.registerForm.value.account,
-      'password': this.registerForm.value.password,
-      'employeeCode': this.registerForm.value.employeeCode
+      'userName': this.registerForm.value.userName,
+      'password': this.registerForm.value.password
 
     };
-    this.httpService.post('http://quants.sufe.edu.cn/loveFamilyregister', param).subscribe(data => {
+    this.httpService.post('http://quants.sufe.edu.cn/userRegister', param).subscribe(data => {
       // console.log("data body:" + data['_body']);
       this.httpResponseData = data['_body'];
       if (this.httpResponseData == "registeredSuccess") {

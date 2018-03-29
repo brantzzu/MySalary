@@ -32,7 +32,7 @@ export class LoginPage {
     private loginService: LoginService) {
     this.loginForm = this.formBuilder.group({
       //phone: ['', [Validators.required, Validators.pattern('1[0-9]{10}')]],// 第一个参数是默认值
-      account: ['', [Validators.required, Validators.pattern('[0-9]+')]],
+      phone: ['', [Validators.required, Validators.pattern('1[0-9]{10}')]],
       password: ['', [Validators.required]]
     });
   }
@@ -73,7 +73,6 @@ export class LoginPage {
         console.log("logiInfo:");
         console.log(loginUser);
         // console.log("loginInfo.user:" + loginInfo.user);
-
         if (loginUser == null) {
           this.nativeService.showToast('用户名或密码错误');
           this.submitted = false;
@@ -85,13 +84,10 @@ export class LoginPage {
             access_token: this.userInfo.token,
             user: {
               id: loginUser.id,
-              account: loginUser.account,
-              name: loginUser.name,
+              userName: loginUser.userName,
               phone: loginUser.phone,
-              post: loginUser.post,
               avatarId: '',
               description: '',
-              employeeCode: loginUser.employeeCode
             }
 
           };

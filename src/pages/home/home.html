@@ -1,37 +1,130 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>我爱我家</ion-title>
+    <ion-title>找房助手</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <div id="logo">
-    <img src="assets/img/woaiwojia.png" alt="logo" class="logo-img">
+  <ion-item>
+    <ion-label>请选择区域</ion-label>
+    <ion-multi-picker item-content [multiPickerColumns]="dependentColumns" [(ngModel)]="default" cancelText="取消" placeholder='请选择'
+      doneText="确定" (ngModelChange)="initPriceStats($event)"></ion-multi-picker>
+
+  </ion-item>
+  <ion-item>
+    <br>
+    <p>
+      <font style="font-size:1.2em">最近一月挂牌情况</font>
+      <font>({{this.currentDate|date:"yyyy-MM-dd"}})</font>
+    </p>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>
+          <p align="center">上涨套数</p>
+          <h2 align="center">
+            <font style="color:red">{{priceUpHouse}}</font>
+          </h2>
+        </ion-col>
+        <ion-col col-4>
+          <p align="center">持平套数</p>
+          <h2 align="center">
+            <font style="color:orange;text-align:center">{{priceHorizonHouse}}</font>
+          </h2>
+        </ion-col>
+        <ion-col col-4>
+          <p align="center">下跌套数</p>
+          <h2 align="center">
+            <font style="color:green">{{priceDownHouse}}</font>
+          </h2>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+  <ion-item>
+    <p>
+      <font style="font-size:1.2em">最近一月价格走势</font>
+      <font>({{this.currentDate|date:"yyyy-MM-dd"}})</font>
+    </p>
+    <br>
+    <div #chart style="width:100%;height:280px;"></div>
+  </ion-item>
+  <p>
+    <font style="font-size:1.2em">推荐房源</font>
+    <font>({{this.currentDate|date:"yyyy-MM-dd"}})</font>
+  </p>
+  <div *ngIf="noRecommendHouse;else recommendHouseTemplate">
+    <h4>暂无推荐房源</h4>
   </div>
-  <div id="functionPanel" class="classification">
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/salary.png" (click)="goToSalary()" />
-      </div>
-      <p>工资信息</p>
-    </div>
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/statistics.png" />
-      </div>
-      <p>绩效信息</p>
-    </div>
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/list.png" />
-      </div>
-      <p>考勤信息</p>
-    </div>
-    <div class="cbox">
-      <div class="icon">
-        <img src="./assets/img/contract.png" />
-      </div>
-      <p>合同信息</p>
-    </div>
-  </div>
+  <ng-template #recommendHouseTemplate>
+    <ion-scroll style="width: 100%; height: 80%;" scrollY="true">
+      <ion-item *ngFor="let item of recommendHouses" text-wrap>
+        <div class="item-text-wrap">
+          <p></p>
+          {{item?.houseName}}
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>总价</p>
+            <h2>
+              <font style="color:red">{{item?.totalPrice}}</font>
+            </h2>
+          </div>
+          <div class="col">
+            <p>单价</p>
+            <h2>
+              <font style="color:red">{{item?.unitPrice}}</font>
+            </h2>
+          </div>
+          <div class="col">
+            <p>本小区单价</p>
+            <h2>
+              <font style="color:red">{{item?.avgPrice}}</font>
+            </h2>
+          </div>
+        </div>
+        <div class="row">
+          <span>
+            <p>{{item?.Community}}</p>
+          </span>
+        </div>
+        <div class="row">
+          <span>
+            <p>{{item?.houseDesc}}</p>
+          </span>
+        </div>
+        <div class="row">
+          <span>
+            <p>{{item?.floors}}</p>
+          </span>
+        </div>
+        <div class="row">
+          <p>{{item?.staticInfo}}</p>
+        </div>
+
+        <!-- <ion-grid>
+            <ion-row>
+              <ion-col col-4>
+                <p align="center">总价</p>
+                <h2 align="center">
+                  <font style="color:red">{{item.totalPrice}}</font>
+                </h2>
+              </ion-col>
+              <ion-col col-4>
+                <p align="center">单价价</p>
+                <h2 align="center">
+                  <font style="color:red">{{item.unitPrice}}</font>
+                </h2>
+              </ion-col>
+              <ion-col col-4>
+                <p align="center">本小区单价</p>
+                <h2 align="center">
+                  <font style="color:red">{{item.avgPrice}}</font>
+                </h2>
+              </ion-col>
+            </ion-row>
+          </ion-grid> -->
+      </ion-item>
+      <p style="text-align:center">没有更多记录</p>
+    </ion-scroll>
+  </ng-template>
 </ion-content>

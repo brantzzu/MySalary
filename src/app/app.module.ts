@@ -35,6 +35,7 @@ import { GlobalData } from "../providers/GlobalData";
 import { ENABLE_FUNDEBUG, IS_DEBUG, FUNDEBUG_API_KEY } from "../providers/Constants";
 import { Logger } from "../providers/Logger";
 import { ModalFromRightEnter, ModalFromRightLeave, ModalScaleEnter, ModalScaleLeave } from "./modal-transitions";
+import { MultiPickerModule } from 'ion-multi-picker';
 
 //declare var require: any;
 //let fundebug: any = require("fundebug-javascript");//先安装依赖:cnpm i fundebug-javascript --save
@@ -69,7 +70,8 @@ export class FunDebugErrorHandler implements ErrorHandler {
     MineModule,
     PerformanceModule,
     AttendanceModule,
-    ContractModule
+    ContractModule,
+    MultiPickerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp],

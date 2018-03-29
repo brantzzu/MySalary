@@ -9,6 +9,7 @@ import { LoginPage } from "../pages/login/login";
 import { Helper } from "../providers/Helper";
 import { TabsPage } from '../pages/tabs/tabs';
 import { ENABLE_FUNDEBUG } from "../providers/Constants";
+import { HomePage } from '../pages/home/home';
 
 declare var fundebug;
 
@@ -40,11 +41,11 @@ export class MyApp {
         if (loginInfo) {
           this.events.publish('user:login', loginInfo);
         } else {
-          let modal = this.modalCtrl.create(LoginPage);
-          modal.present();
-          modal.onDidDismiss(data => {
-            data && console.log(data);
-          });
+          // let modal = this.modalCtrl.create(LoginPage);
+          // modal.present();
+          // modal.onDidDismiss(data => {
+          //   data && console.log(data);
+          // });
         }
       });
       this.nativeService.statusBarStyleDefault();
